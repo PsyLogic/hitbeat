@@ -8,92 +8,107 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{asset('css/hitbit.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+        <div class="mainContainer">
+            
+            <div id="topContainer">
+                <div class="sideBarContainer">
+                    <nav class="sideBar">
+                        <a href="#" class="logo">
+                            <img src="{{asset('/images/logo.png')}}" alt="logo-hit-the-beat" >
+                        </a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+                        <div class="group">
+                            <div class="navItem">
+                                <input type="text" class="navItemInput" placeholder="Search... "> 
+                            </div>
+                        </div>
+                        
+                        <div class="group">
+                            <div class="navItem">
+                                <a href="#" class="navItemLink">Browse</a>
+                            </div>
+                            <div class="navItem">
+                                <a href="#" class="navItemLink">Your Music</a>
+                            </div>
+                            <div class="navItem">
+                                <a href="#" class="navItemLink">Othmane Nemli</a>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
-            @endif
+                <div class="contentContainer"></div>
+            </div>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+            <div id="playerBarContainer">
+                <div id="playerBar">
+                    <div id="leftPlayerControls">
+                        <div class="content">
+                            <a href="#" class="albumLink">
+                                <img src="https://media.cdr.nl/COVER/MEDIUM/FRONT/JK227386/KOD.jpg" alt="ALbum Pic" class="albumCover">
+                            </a>
+                            <div class="trackInfo">
+                                <span class="trackName">
+                                    <a href="#">Spiel</a>
+                                </span>
+                                <span class="artistName">
+                                    <a href="#">Rammstein</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="centerPlayerControls">
+                        <div class="content playerControls">
+                            <div class="controls">
+                                <button class="controlBtn shuffle" title="Shuffle">
+                                    <i class="fas fa-random"></i>
+                                </button>
+                                <button class="controlBtn previous" title="Previous">
+                                    <i class="far fa-arrow-alt-circle-left"></i>
+                                </button>
+                                <button class="controlBtn play" title="Play">
+                                    <i class="far fa-play-circle"></i>
+                                </button>
+                                <button class="controlBtn pause" title="Pause" style="display:none;">
+                                    <i class="far fa-pause-circle"></i>
+                                </button>
+                                <button class="controlBtn next" title="Next">
+                                    <i class="far fa-arrow-alt-circle-right"></i>
+                                </button>
+                                <button class="controlBtn repeat" title="Repeat">
+                                    <i class="fas fa-retweet"></i>
+                                </button>
+                            </div>
+                            <div class="playbackBar">
+                                <span class="progressTime current">0.00</span>
+                                <div class="progressBar">
+                                    <div class="progressBarBg">
+                                        <div class="progress"></div>
+                                    </div>
+                                </div>
+                                <span class="progressTime remaining">0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="rightPlayerControls">
+                        <div class="volumeBar">
+                            <button class="controlBtn volume" title="Volume">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <div class="progressBar">
+                                <div class="progressBarBg">
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        
     </body>
 </html>
