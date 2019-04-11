@@ -82,4 +82,21 @@ class SongController extends Controller
     {
         //
     }
+    
+    public function play(Song $song)
+    {
+        if(request()->ajax()){
+            $song->increment('plays');
+            return response()->json($song->load('artist', 'album'));
+        }        
+    }
+    
+    public function random()
+    {
+        if(request()->ajax()){
+            return response()->json(Song::inRandomOrder()->limit(10)->get()->load('artist','album'));
+        }        
+    }
+
+    
 }

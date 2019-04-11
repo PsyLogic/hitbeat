@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Main route (Home)
+Route::get('/', 'HomeController');
 
+// Album routes
+Route::resource('album','AlbumController');
+
+// Song routes
+Route::get('song/random','SongController@random')->name('song.random');
+Route::get('song/{song}/play','SongController@play')->name('song.play');
+Route::resource('song','SongController');
+
+
+// Auth Routes
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

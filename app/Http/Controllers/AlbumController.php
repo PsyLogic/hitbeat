@@ -14,7 +14,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -46,7 +46,7 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        //
+        return view('album.single', compact('album'));
     }
 
     /**
