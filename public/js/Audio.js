@@ -17,10 +17,17 @@ var updateProgress = function(audio){
     $('.playbackBar .progress').css('width',playProgressBarWidth + '%');
 }
 
+var updateVolumeBar = function(audio){
+    var volume = audio.volume * 100;
+    $('.volumeBar .progress').css('width',volume + '%');
+}
+
 var Audio = function(){
 
     this.isPlaying = false;
     this.audio = document.createElement('audio')
+    this.repeat = false;
+    this._this = this;
 
     this.audio.addEventListener('canplay', function(){
         var duration = formatTime(this.duration);
@@ -31,6 +38,10 @@ var Audio = function(){
         if(this.duration){
             updateProgress(this)            
         }
+    });
+    
+    this.audio.addEventListener('volumechange', function(){
+        updateVolumeBar(this)
     });
 
     this.setTrack = function(src){
@@ -49,11 +60,27 @@ var Audio = function(){
 
     this.setTime = function(time) {
         this.audio.currentTime = time;
-        console.log(this.audio.currentTime);
     }
 
     this.getAudio = function(){
         return this.audio;
+    }
+
+    this.updateVolume = function(newVolume){
+        this.audio.volume = newVolume;
+    }
+
+    this.enableRepeat = function (enabled){
+        this.repeat = enabled;
+    }
+
+    this.getRepeatStatus = function(){
+        return this.repeat;
+    }
+
+    this.mutedOnOff = function(){
+        this.audio.muted = !this.audio.muted;
+        return !this.audio.muted;
     }
 
 

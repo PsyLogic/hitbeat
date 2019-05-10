@@ -1,4 +1,4 @@
-<div id="playerBarContainer">
+<div id="playerBarContainer" class="noselect">
     <div id="playerBar">
         <div id="leftPlayerControls">
             <div class="content">
@@ -52,6 +52,7 @@
             <div class="volumeBar">
                 <button class="controlBtn volume" title="Volume">
                     <i class="fas fa-volume-up"></i>
+                    <i class="fas fa-volume-mute" style="display:none;"></i>
                 </button>
                 <div class="progressBar">
                     <div class="progressBarBg">
